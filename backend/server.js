@@ -10,8 +10,8 @@ app.use(cors());
 app.use(express.json());
 
 // routes
-const bookingRoutes = require("./routes/bookingRoutes");
-app.use("/api/bookings", bookingRoutes);
+//const bookingRoutes = require("./routes/bookingRoutes");
+//app.use("/api/bookings", bookingRoutes);
 
 // home route
 app.get("/", (req, res) => {

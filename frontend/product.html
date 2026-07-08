@@ -1,102 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBT AQUA ROOTS - Product Details</title>
+    <!-- Index layout style match aahurathukaaha same font and CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #f5f9fc;
+            color: #333;
+            line-height: 1.6;
+        }
+        /* Navbar Style */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 5%;
+            background: #ffffff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #0d3b66;
+        }
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            color: #0d3b66;
+            font-weight: 600;
+            font-size: 15px;
+        }
 
-<meta charset="UTF-8">
+        /* Container Layout */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #00b4d8;
+            font-weight: 600;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+        /* Detail Grid Structure */
+        .details-wrapper {
+            display: flex;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            border: 1px solid #eef2f5;
+        }
+        
+        /* Left Column - Media Display */
+        .media-column {
+            width: 50%;
+            background: #fafbfc;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid #eef2f5;
+        }
+        .main-img-box {
+            width: 100%;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .main-img-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .thumbnails-row {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        .thumb-box {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            transition: border-color 0.2s;
+        }
+        .thumb-box.active {
+            border-color: #00b4d8;
+        }
+        .thumb-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
 
-<title>Product Details | SBT AQUA ROOTS</title>
+        /* Right Column - Content Specs */
+        .content-column {
+            width: 50%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        .prod-title {
+            font-size: 30px;
+            color: #0d3b66;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+        .prod-price {
+            font-size: 24px;
+            color: #2ec4b6;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: #e6f9f7;
+            padding: 6px 18px;
+            border-radius: 20px;
+            width: fit-content;
+        }
+        .prod-desc {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .features-heading {
+            font-size: 18px;
+            color: #0d3b66;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .feature-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        .feature-list li {
+            font-size: 14px;
+            color: #444;
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .feature-list li i {
+            color: #2ec4b6;
+            font-size: 14px;
+        }
 
-<link rel="stylesheet"
-href="css/style.css">
+        .order-btn {
+            display: block;
+            text-align: center;
+            background: #25d366;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            margin-top: auto;
+            transition: background 0.3s;
+        }
+        .order-btn:hover {
+            background: #20ba5a;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+        /* Responsive Viewports */
+        @media (max-width: 768px) {
+            .details-wrapper { flex-direction: column; }
+            .media-column, .content-column { width: 100%; }
+            .content-column { padding: 30px 20px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">💧 SBT AQUA ROOTS</div>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-<nav class="navbar">
+    <!-- CONTENT DATA TARGET WRAPPER -->
+    <div class="container">
+        <a href="index.html#products" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Products</a>
+        <div class="details-wrapper" id="details-view">
+            <!-- Dynamic Injection Page Code via JS Matrix will generate here -->
+        </div>
+    </div>
 
-<div class="logo">
+    <script>
+        // Data block matching exactly with your spec files and .png paths
+        const productDatabase = {
+            "1": {
+                name: "Dolphin Gold",
+                price: "6,500",
+                desc: "Efficient and compact base filtration model perfect for standard home water purifying requirements.",
+                features: ["Basic model structure", "Without removable tank configuration", "Tank capacity: 8 Litres", "Includes standard wall stand & auto-valve", "Free execution & installation charges"],
+                images: ["images/dolphin-gold.png"]
+            },
+            "2": {
+                name: "Aqua Mars",
+                price: "8,500",
+                desc: "Upgraded functional purification system featuring a highly convenient detachable build setup.",
+                features: ["Fully removable tank design", "Tank capacity: 10 Litres", "Easy maintenance structure for manual washing", "Includes custom stand & premium auto-valve system", "Free setup & professional installation support"],
+                images: ["images/aqua-mars.png"]
+            },
+            "3": {
+                name: "Aqua Sonnet",
+                price: "10,500",
+                desc: "High volume storage purification model providing enhanced specialized secondary filter layers.",
+                features: ["Massive tank capacity: 13 Litres", "Easily removable container setup", "Equipped with advanced UV or Active Copper additional filters", "Includes strong base bracket stand & automatic shutoff valve", "Free delivery & installation"],
+                images: ["images/aqua-sonnet.png"]
+            },
+            "4": {
+                name: "Prolife",
+                price: "16,000",
+                desc: "Premium flagship multi-stage heavy-duty purification ecosystem for pristine drinking water quality.",
+                features: ["Maximum tank capacity: 15 Litres", "Heavy-duty pure branded Prolife core layers", "Complete premium protection: Advanced RO + UV + Copper + UF filters", "No external cover or extra standalone frame required", "Free installation & dedicated service checkup included"],
+                images: ["images/profile1.png", "images/profile2.png", "images/profile3.png"]
+            }
+        };
 
-💧 SBT AQUA ROOTS
+        // Query extractor script logic
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        const item = productDatabase[productId];
+        const detailsView = document.getElementById('details-view');
 
-</div>
+        if (item) {
+            let thumbnailsHTML = '';
+            // Render alternative thumbnails if multi-images exist (like Prolife)
+            if (item.images.length > 1) {
+                item.images.forEach((imgUrl, index) => {
+                    thumbnailsHTML += `
+                        <div class="thumb-box ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${imgUrl}', this)">
+                            <img src="${imgUrl}" alt="thumbnail">
+                        </div>
+                    `;
+                });
+            }
 
-<ul>
+            detailsView.innerHTML = `
+                <div class="media-column">
+                    <div class="main-img-box">
+                        <img id="main-product-img" src="${item.images[0]}" alt="${item.name}">
+                    </div>
+                    <div class="thumbnails-row">${thumbnailsHTML}</div>
+                </div>
+                <div class="content-column">
+                    <h1 class="prod-title">${item.name}</h1>
+                    <div><span class="prod-price">₹${item.price}</span></div>
+                    <p class="prod-desc">${item.desc}</p>
+                    
+                    <h3 class="features-heading">Product Specifications</h3>
+                    <ul class="feature-list">
+                        ${item.features.map(f => `<li><i class="fas fa-circle-check"></i> ${f}</li>`).join('')}
+                    </ul>
 
-<li>
+                    <a href="https://wa.me/919442452059?text=Hi! I am interested in booking the ${item.name} water purifier. Please share details." target="_blank" class="order-btn">
+                        <i class="fab fa-whatsapp"></i> Order/Enquire via WhatsApp
+                    </a>
+                </div>
+            `;
+        } else {
+            // Fallback content layout in case id is mismatched or missing
+            detailsView.innerHTML = `
+                <div style="padding: 60px; text-align: center; width: 100%;">
+                    <i class="fas fa-circle-exclamation" style="font-size: 48px; color: #ffbc00; margin-bottom: 15px;"></i>
+                    <h3>Product Data Not Found</h3>
+                    <p style="color: #777; margin-top: 5px;">Please go back and select a valid item from the product list.</p>
+                </div>`;
+        }
 
-<a href="index.html">
-
-Home
-
-</a>
-
-</li>
-
-<li>
-
-<a href="index.html#products">
-
-Products
-
-</a>
-
-</li>
-
-<li>
-
-<a href="index.html#contact">
-
-Contact
-
-</a>
-
-</li>
-
-</ul>
-
-</nav>
-
-
-<!-- PRODUCT DETAILS -->
-
-<section class="product-page">
-
-<div id="product-details">
-
-</div>
-
-</section>
-
-
-<!-- WHATSAPP -->
-
-<a
-href="https://wa.me/919442452059?text=Hello%20SBT%20AQUA%20ROOTS"
-target="_blank"
-class="whatsapp-btn">
-
-<i class="fab fa-whatsapp"></i>
-
-</a>
-
-
-<script src="js/products.js"></script>
-
-<script src="js/product.js"></script>
-
+        // Thumbnail swapper action code
+        function changeMainImage(imgSrc, thumbElement) {
+            document.getElementById('main-product-img').src = imgSrc;
+            document.querySelectorAll('.thumb-box').forEach(box => box.classList.remove('active'));
+            thumbElement.classList.add('active');
+        }
+    </script>
 </body>
-
 </html>
